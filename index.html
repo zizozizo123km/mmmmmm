@@ -14,6 +14,12 @@
       text-align: center;
       padding: 20px;
     }
+    #loading {
+      text-align: center;
+      font-size: 18px;
+      padding: 20px;
+      color: #0f0;
+    }
     #player {
       display: block;
       margin: 20px auto;
@@ -55,17 +61,19 @@
 <body>
 
   <h1>Nacero TV - بث القنوات المباشر</h1>
+  <div id="loading">جاري تحميل القنوات...</div>
   <video id="player" controls autoplay></video>
-
   <div class="grid" id="channel-grid"></div>
 
   <script>
+    const loading = document.getElementById('loading');
+    const container = document.getElementById('channel-grid');
+    const player = document.getElementById('player');
+
     fetch('proxy.php')
       .then(res => res.text())
       .then(data => {
         const lines = data.split('\n');
-        const container = document.getElementById('channel-grid');
-        const player = document.getElementById('player');
 
         for (let i = 0; i < lines.length; i++) {
           if (lines[i].startsWith('#EXTINF')) {
@@ -93,6 +101,12 @@
             i++; // تخطي الرابط
           }
         }
+
+        loading.style.display = 'none'; // إخفاء رسالة التحميل
+      })
+      .catch(error => {
+        loading.textContent = 'فشل في تحميل القنوات';
+        console.error('حدث خطأ:', error);
       });
   </script>
 
