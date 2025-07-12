@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Player</title>
-  <link href="https://vjs.zencdn.net/8.22.0/video-js.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>موقع بإعلانات Interstitial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
 
-  <video
-    id="my-video"
-    class="video-js vjs-default-skin"
-    controls
-    preload="auto"
-    width="640"
-    height="360"
-    poster="poster.jpg" <!-- ضع صورة غلاف الفيديو هنا أو احذف السطر -->
-    data-setup="{}"
-  >
-    <source src="" type="video/mp4" />
-    <source src="http://wanicelife.com:8880/movie/D12m3967/74185011/78906.mkv" type="video/webm" />
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that
-      <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>.
-    </p>
-  </video>
+    <h1>مرحبًا بك في موقعي</h1>
+    <p>الرجاء الانتظار، سيتم عرض إعلان الآن...</p>
 
-  <script src="https://vjs.zencdn.net/8.22.0/video.min.js"></script>
+    <!-- كود إعلان Interstitial -->
+    <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+    <script type="text/javascript">
+        aclib.runInterstitial({
+            zoneId: '10168998',
+        });
+    </script>
 
 </body>
 </html>
