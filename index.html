@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة حب لاسماء</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #5a2c2c;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #d23669;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff6b81;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        .signature {
+            text-align: left;
+            font-style: italic;
+            font-weight: bold;
+            margin-top: 30px;
+            color: #d23669;
+        }
+        
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        .music-control i {
+            font-size: 24px;
+            color: #d23669;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <div class="container">
+        <h1>إلى حبيبتي أسماء <i class="fas fa-heart" style="color: #ff6b81;"></i></h1>
+        
+        <div class="message">
+            <p>أسماء حبيبتي،</p>
+            <p>كيف أبدأ حديثي وأنتِ الحكاية التي لا تنتهي؟ كيف أكتب عن الحب وأنتِ أجمل معانيه؟</p>
+            <p>في عينيكِ وجدت الكون بأكمله، وفي قلبكِ وجدت بيتي الذي أرتاح فيه.</p>
+            <p>كل يوم معكِ هو هدية من السماء، وكل لحظة بعيداً عنكِ هي فراق مؤلم.</p>
+            <p>أنتِ النور الذي يضيء حياتي، والروح التي تبعث الدفء في قلبي.</p>
+            <p>أحبكِ أكثر مما تستطيع الكلمات التعبير عنه، وأكثر مما تستطيع النجوم العد.</p>
+            <p>❤️</p>
+        </div>
+        
+        <div class="signature">
+            مع كل الحب،<br>
+            من يعشقكِ إلى الأبد
+        </div>
+    </div>
+    
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-music"></i>
+    </div>
+    
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <!-- يمكنك استبدال الرابط بأي موسيقى رومانسية أخرى -->
+    </audio>
+    
+    <script>
+        // إنشاء القلوب العائمة
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            
+            // تحديد موقع عشوائي
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            
+            // حجم عشوائي
+            const size = Math.random() * 2 + 1;
+            heart.style.fontSize = size + 'rem';
+            
+            // مدة وتأخير عشوائي للحركة
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            
+            container.appendChild(heart);
+            
+            // إزالة القلب بعد انتهاء الحركة لتجنب تراكم العناصر
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        
+        // إنشاء القلوب كل 300 مللي ثانية
+        setInterval(createHearts, 300);
+        
+        // التحكم بالموسيقى
+        const musicControl = document.getElementById('musicControl');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+        
+        musicControl.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicControl.innerHTML = '<i class="fas fa-music"></i>';
+            } else {
+                bgMusic.play();
+                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // بدء الموسيقى عند التفاعل مع الصفحة (مطلوب في بعض المتصفحات)
+        document.body.addEventListener('click', () => {
+            if (!isPlaying) {
+                bgMusic.play();
+                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+                isPlaying = true;
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
