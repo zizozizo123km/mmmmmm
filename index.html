@@ -3,202 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رسالة حب لاسماء</title>
+    <title>رسالة خاصة لهاجر</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
         
         body {
-            font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            margin: 0;
-            padding: 0;
-            height: 100vh;
+            font-family: 'Tajawal', Arial, sans-serif;
+            background: linear-gradient(135deg, #f9e8ff 0%, #e1c4ff 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            color: #5a2c2c;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow-x: hidden;
         }
-        
         .container {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            width: 80%;
-            max-width: 600px;
+            max-width: 650px;
             padding: 30px;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 1.5s ease-in-out;
+            perspective: 1000px;
         }
-        
-        .container::before {
+        h1 {
+            color: #7b1fa2;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .intro-text {
+            font-size: 1.2rem;
+            color: #4a148c;
+            margin-bottom: 30px;
+        }
+        .gift-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 40px;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+        }
+        .gift-box {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #e91e63 0%, #c2185b 100%);
+            position: relative;
+            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            transform: translateZ(20px);
+            backface-visibility: hidden;
+            z-index: 2;
+        }
+        .gift-box:hover {
+            transform: translateZ(20px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.5);
+        }
+        .gift-box:active {
+            transform: translateZ(20px) scale(0.95);
+        }
+        .gift-box::before {
             content: "";
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-            z-index: -1;
+            width: 100%;
+            height: 25px;
+            background: linear-gradient(145deg, #f50057 0%, #d5004a 100%);
+            top: -12px;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
-        
-        h1 {
-            text-align: center;
-            color: #d23669;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        .gift-box::after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 100%;
+            background: linear-gradient(145deg, #f50057 0%, #d5004a 100%);
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 8px;
+            box-shadow: 5px 0 10px rgba(0,0,0,0.1);
         }
-        
+        .gift-shadow {
+            position: absolute;
+            width: 80%;
+            height: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 50%;
+            bottom: -15px;
+            left: 10%;
+            filter: blur(10px);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        .gift-box:hover ~ .gift-shadow {
+            width: 90%;
+            filter: blur(12px);
+        }
         .message {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            margin-top: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+            transform-origin: top center;
+        }
+        .message h2 {
+            color: #7b1fa2;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        .message h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #e91e63, #9c27b0);
+            border-radius: 3px;
+        }
+        .message p {
             font-size: 1.2rem;
             line-height: 1.8;
-            text-align: center;
-            margin-bottom: 30px;
+            color: #333;
+            margin-bottom: 20px;
         }
-        
-        .heart {
-            position: absolute;
+        .signature {
+            font-family: 'Dancing Script', cursive;
             font-size: 1.5rem;
-            color: #ff6b81;
-            animation: float 4s ease-in-out infinite;
+            color: #e91e63;
+            margin-top: 30px;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(20px);
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        .hearts {
+            font-size: 2rem;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            opacity: 0;
+        }
+        .heart {
+            animation: float 3s ease-in-out infinite;
+        }
+        .heart:nth-child(1) { animation-delay: 0.1s; color: #e91e63; }
+        .heart:nth-child(2) { animation-delay: 0.3s; color: #9c27b0; }
+        .heart:nth-child(3) { animation-delay: 0.5s; color: #673ab7; }
+        .stars {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            opacity: 0;
+        }
+        .star {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .star:nth-child(1) { animation-delay: 0.2s; color: #ffc107; }
+        .star:nth-child(2) { animation-delay: 0.4s; color: #ff9800; }
+        .star:nth-child(3) { animation-delay: 0.6s; color: #ff5722; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-            100% { transform: translateY(0) rotate(0deg); }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 100;
         }
-        
-        .signature {
-            text-align: left;
-            font-style: italic;
-            font-weight: bold;
-            margin-top: 30px;
-            color: #d23669;
+        .flower {
+            position: absolute;
+            font-size: 1.5rem;
+            pointer-events: none;
+            z-index: 90;
+            opacity: 0;
         }
-        
         .music-control {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: white;
-            padding: 10px;
+            background: rgba(255,255,255,0.8);
             border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            z-index: 100;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
         }
-        
         .music-control i {
-            font-size: 24px;
-            color: #d23669;
+            font-size: 1.5rem;
+            color: #9c27b0;
         }
-        
-        .floating-hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .message {
+                padding: 25px;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="floating-hearts" id="hearts-container"></div>
-    
-    <div class="container">
-        <h1>إلى حبيبتي أسماء <i class="fas fa-heart" style="color: #ff6b81;"></i></h1>
-        
-        <div class="message">
-            <p>أسماء حبيبتي،</p>
-            <p>كيف أبدأ حديثي وأنتِ الحكاية التي لا تنتهي؟ كيف أكتب عن الحب وأنتِ أجمل معانيه؟</p>
-            <p>في عينيكِ وجدت الكون بأكمله، وفي قلبكِ وجدت بيتي الذي أرتاح فيه.</p>
-            <p>كل يوم معكِ هو هدية من السماء، وكل لحظة بعيداً عنكِ هي فراق مؤلم.</p>
-            <p>أنتِ النور الذي يضيء حياتي، والروح التي تبعث الدفء في قلبي.</p>
-            <p>أحبكِ أكثر مما تستطيع الكلمات التعبير عنه، وأكثر مما تستطيع النجوم العد.</p>
-            <p>❤️</p>
-        </div>
-        
-        <div class="signature">
-            مع كل الحب،<br>
-            من يعشقكِ إلى الأبد
-        </div>
-    </div>
-    
     <div class="music-control" id="musicControl">
         <i class="fas fa-music"></i>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
     </div>
     
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        <!-- يمكنك استبدال الرابط بأي موسيقى رومانسية أخرى -->
-    </audio>
-    
+    <div class="container">
+        <h1 class="animate__animated animate__fadeInDown">هاجر العزيزة</h1>
+        <p class="intro-text animate__animated animate__fadeIn animate__delay-1s">اضغطي على الصندوق لاكتشاف رسالة خاصة لك!</p>
+        
+        <div class="gift-container animate__animated animate__zoomIn animate__delay-2s">
+            <div class="gift-box" onclick="openGift()">🎁 اضغطي هنا 🎁</div>
+            <div class="gift-shadow"></div>
+        </div>
+        
+        <div id="message" class="message">
+            <div class="hearts" id="hearts">
+                <div class="heart">❤️</div>
+                <div class="heart">❤️</div>
+                <div class="heart">❤️</div>
+            </div>
+            <h2 class="animate__animated">إلى أعز صديقة!</h2>
+            <p>
+                هاجر الغالية،<br><br>
+                أردت أن أخبرك كم أنت شخصية مميزة في حياتي. ضحكتك تشرق كالشمس، وقلبك الطيب يجعل العالم مكاناً أجمل.<br><br>
+                شكراً لأنك دوماً بجانبي، في الفرح والحزن. أنتِ حقاً كنز لا يعوض وصديقة لا تُنسى.<br><br>
+                أتمنى أن تظلي كما أنتِ - مذهلة، قوية، ورائعة! لأنكِ تستحقين كل الخير في هذا العالم.
+            </p>
+            <div class="stars" id="stars">
+                <div class="star">✨</div>
+                <div class="star">🌟</div>
+                <div class="star">✨</div>
+            </div>
+            <div class="signature" id="signature">مع كل الحب، عبد الناصر</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script>
-        // إنشاء القلوب العائمة
-        function createHearts() {
-            const container = document.getElementById('hearts-container');
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.classList.add('heart');
-            
-            // تحديد موقع عشوائي
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = Math.random() * 100 + 'vh';
-            
-            // حجم عشوائي
-            const size = Math.random() * 2 + 1;
-            heart.style.fontSize = size + 'rem';
-            
-            // مدة وتأخير عشوائي للحركة
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            heart.style.animationDelay = Math.random() * 2 + 's';
-            
-            container.appendChild(heart);
-            
-            // إزالة القلب بعد انتهاء الحركة لتجنب تراكم العناصر
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
-        }
-        
-        // إنشاء القلوب كل 300 مللي ثانية
-        setInterval(createHearts, 300);
-        
-        // التحكم بالموسيقى
-        const musicControl = document.getElementById('musicControl');
         const bgMusic = document.getElementById('bgMusic');
-        let isPlaying = false;
+        const musicControl = document.getElementById('musicControl');
+        let musicPlaying = false;
         
+        // تشغيل/إيقاف الموسيقى
         musicControl.addEventListener('click', () => {
-            if (isPlaying) {
+            if (musicPlaying) {
                 bgMusic.pause();
                 musicControl.innerHTML = '<i class="fas fa-music"></i>';
             } else {
                 bgMusic.play();
                 musicControl.innerHTML = '<i class="fas fa-pause"></i>';
             }
-            isPlaying = !isPlaying;
+            musicPlaying = !musicPlaying;
         });
         
-        // بدء الموسيقى عند التفاعل مع الصفحة (مطلوب في بعض المتصفحات)
-        document.body.addEventListener('click', () => {
-            if (!isPlaying) {
-                bgMusic.play();
-                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
-                isPlaying = true;
+        function openGift() {
+            const giftBox = document.querySelector('.gift-box');
+            const message = document.getElementById('message');
+            const hearts = document.getElementById('hearts');
+            const stars = document.getElementById('stars');
+            const signature = document.getElementById('signature');
+            
+            // تأثير اهتزاز الصندوق
+            gsap.to(giftBox, {
+                scale: 0.9,
+                duration: 0.1,
+                yoyo: true,
+                repeat: 1,
+                onComplete: function() {
+                    gsap.to(giftBox, {
+                        scale: 0,
+                        rotationY: 180,
+                        duration: 0.5,
+                        ease: "back.in"
+                    });
+                    
+                    // عرض الرسالة مع تأثيرات متتالية
+                    message.style.display = 'block';
+                    gsap.from(message, {
+                        duration: 1,
+                        scale: 0.8,
+                        opacity: 0,
+                        ease: "elastic.out(1, 0.5)"
+                    });
+                    
+                    // تأثيرات للقلوب والنجوم والتوقيع
+                    gsap.to(hearts, {
+                        opacity: 1,
+                        duration: 1,
+                        ease: "power2.out",
+                        onComplete: function() {
+                            gsap.to(".heart", {
+                                duration: 1,
+                                y: -20,
+                                repeat: -1,
+                                yoyo: true,
+                                stagger: 0.2
+                            });
+                        }
+                    });
+                    
+                    gsap.to(stars, {
+                        opacity: 1,
+                        duration: 1,
+                        delay: 0.5,
+                        ease: "power2.out",
+                        onComplete: function() {
+                            gsap.to(".star", {
+                                duration: 2,
+                                rotation: 360,
+                                repeat: -1,
+                                ease: "none"
+                            });
+                        }
+                    });
+                    
+                    gsap.to(signature, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        delay: 1,
+                        ease: "back.out"
+                    });
+                    
+                    // تأثير الألعاب النارية
+                    createConfetti();
+                    createFlowers();
+                }
+            });
+        }
+        
+        function createConfetti() {
+            const colors = ['#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#00bcd4', '#4caf50', '#8bc34a', '#ffc107', '#ff9800'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = -10 + 'px';
+                document.body.appendChild(confetti);
+                
+                gsap.to(confetti, {
+                    y: Math.random() * 100 + 100,
+                    x: (Math.random() - 0.5) * 100,
+                    rotation: Math.random() * 360,
+                    opacity: 0,
+                    duration: 2 + Math.random() * 3,
+                    delay: Math.random() * 0.5,
+                    onComplete: function() {
+                        confetti.remove();
+                    }
+                });
             }
-        }, { once: true });
+        }
+        
+        function createFlowers() {
+            const flowers = ['🌸', '🌺', '🌻', '🌹', '🌼', '💐', '🏵️'];
+            
+            for (let i = 0; i < 20; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.top = Math.random() * 100 + 'vh';
+                flower.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                document.body.appendChild(flower);
+                
+                gsap.fromTo(flower, 
+                    { opacity: 0, scale: 0 },
+                    { 
+                        opacity: 1, 
+                        scale: 1,
+                        duration: 1,
+                        delay: Math.random() * 1,
+                        onComplete: function() {
+                            gsap.to(flower, {
+                                opacity: 0,
+                                scale: 0,
+                                duration: 1,
+                                delay: 3 + Math.random() * 2,
+                                onComplete: function() {
+                                    flower.remove();
+                                }
+                            });
+                        }
+                    }
+                );
+            }
+        }
     </script>
 </body>
-</html>
+    </html>
